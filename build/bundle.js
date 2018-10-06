@@ -69,7 +69,7 @@
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var toSubscriber_1 = __webpack_require__(214);
 var observable_1 = __webpack_require__(33);
 var pipe_1 = __webpack_require__(45);
@@ -686,7 +686,7 @@ exports.OuterSubscriber = OuterSubscriber;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var isArrayLike_1 = __webpack_require__(70);
 var isPromise_1 = __webpack_require__(71);
 var isObject_1 = __webpack_require__(66);
@@ -3228,32 +3228,6 @@ exports.tryCatch = tryCatch;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-// CommonJS / Node have global context exposed as "global" variable.
-// We don't want to include the whole node.d.ts this this compilation unit so we'll just fake
-// the global "global" var for now.
-var __window = typeof window !== 'undefined' && window;
-var __self = typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' &&
-    self instanceof WorkerGlobalScope && self;
-var __global = typeof global !== 'undefined' && global;
-var _root = __window || __global || __self;
-exports.root = _root;
-// Workaround Closure Compiler restriction: The body of a goog.module cannot use throw.
-// This is needed when used with angular/tsickle which inserts a goog.module statement.
-// Wrap in IIFE
-(function () {
-    if (!_root) {
-        throw new Error('RxJS could not find any global context (window, self, global)');
-    }
-})();
-//# sourceMappingURL=root.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)))
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13624,6 +13598,32 @@ return jQuery;
 
 
 /***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+// CommonJS / Node have global context exposed as "global" variable.
+// We don't want to include the whole node.d.ts this this compilation unit so we'll just fake
+// the global "global" var for now.
+var __window = typeof window !== 'undefined' && window;
+var __self = typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' &&
+    self instanceof WorkerGlobalScope && self;
+var __global = typeof global !== 'undefined' && global;
+var _root = __window || __global || __self;
+exports.root = _root;
+// Workaround Closure Compiler restriction: The body of a goog.module cannot use throw.
+// This is needed when used with angular/tsickle which inserts a goog.module statement.
+// Wrap in IIFE
+(function () {
+    if (!_root) {
+        throw new Error('RxJS could not find any global context (window, self, global)');
+    }
+})();
+//# sourceMappingURL=root.js.map
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)))
+
+/***/ }),
 /* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13783,6 +13783,63 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 
 "use strict";
 
+
+var emitter = {
+    on: function on(eventName, callback) {
+        if (!this[eventName] || !Array.isArray(this[eventName])) {
+            this[eventName] = [];
+        }
+        this[eventName].push(callback);
+    },
+
+    emit: function emit(eventName, param) {
+        for (var i = 0; i < this[eventName].length; i++) {
+            var subscribedCB = this[eventName][i];
+            if (param) subscribedCB(param);else subscribedCB();
+        }
+    }
+};
+
+module.exports = emitter;
+// change this so that the emitter holds an 'events' property
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var CubeState = {
+
+    cameraFacing: 'unInitialized', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box'  */
+    cameraPreviousFacing: '', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box' */
+    introAnimationTriggered: false,
+    introAnimationFinished: false,
+    navigationButtonsEnabled: false,
+
+    get: function get(propName) {
+        return CubeState[propName];
+    },
+
+    set: function set(propName, propValue) {
+        if (propName == 'cameraFacing' && propValue) {
+            CubeState.cameraPreviousFacing = CubeState.cameraFacing;
+        }
+        CubeState[propName] = propValue;
+        console.log('current facing ' + CubeState.cameraFacing, 'previous facing ' + CubeState.cameraPreviousFacing);
+    }
+
+};
+
+module.exports = CubeState;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13790,7 +13847,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Observable_1 = __webpack_require__(0);
 var ScalarObservable_1 = __webpack_require__(47);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 var isScheduler_1 = __webpack_require__(13);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -13906,7 +13963,7 @@ exports.ArrayObservable = ArrayObservable;
 //# sourceMappingURL=ArrayObservable.js.map
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13993,63 +14050,6 @@ exports.EmptyObservable = EmptyObservable;
 //# sourceMappingURL=EmptyObservable.js.map
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var emitter = {
-    on: function on(eventName, callback) {
-        if (!this[eventName] || !Array.isArray(this[eventName])) {
-            this[eventName] = [];
-        }
-        this[eventName].push(callback);
-    },
-
-    emit: function emit(eventName, param) {
-        for (var i = 0; i < this[eventName].length; i++) {
-            var subscribedCB = this[eventName][i];
-            if (param) subscribedCB(param);else subscribedCB();
-        }
-    }
-};
-
-module.exports = emitter;
-// change this so that the emitter holds an 'events' property
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var CubeState = {
-
-    cameraFacing: 'unInitialized', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box'  */
-    cameraPreviousFacing: '', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box' */
-    introAnimationTriggered: false,
-    introAnimationFinished: false,
-    navigationButtonsEnabled: false,
-
-    get: function get(propName) {
-        return CubeState[propName];
-    },
-
-    set: function set(propName, propValue) {
-        if (propName == 'cameraFacing' && propValue) {
-            CubeState.cameraPreviousFacing = CubeState.cameraFacing;
-        }
-        CubeState[propName] = propValue;
-        console.log('current facing ' + CubeState.cameraFacing, 'previous facing ' + CubeState.cameraPreviousFacing);
-    }
-
-};
-
-module.exports = CubeState;
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14120,7 +14120,7 @@ exports.MulticastOperator = MulticastOperator;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 function symbolIteratorPonyfill(root) {
     var Symbol = root.Symbol;
     if (typeof Symbol === 'function') {
@@ -14499,7 +14499,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var Action_1 = __webpack_require__(253);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -15181,7 +15181,7 @@ exports.isFunction = isFunction;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var Symbol = root_1.root.Symbol;
 exports.rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
     Symbol.for('rxSubscriber') : '@@rxSubscriber';
@@ -15197,7 +15197,7 @@ exports.$$rxSubscriber = exports.rxSubscriber;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 function getSymbolObservable(context) {
     var $$observable;
     var Symbol = context.Symbol;
@@ -15326,7 +15326,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var isArray_1 = __webpack_require__(14);
 var OuterSubscriber_1 = __webpack_require__(2);
 var subscribeToResult_1 = __webpack_require__(3);
@@ -15675,7 +15675,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var isArray_1 = __webpack_require__(14);
 var Subscriber_1 = __webpack_require__(1);
 var OuterSubscriber_1 = __webpack_require__(2);
@@ -19448,7 +19448,7 @@ exports.concatAll = concatAll;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var mergeAll_1 = __webpack_require__(38);
 var isScheduler_1 = __webpack_require__(13);
 /* tslint:enable:max-line-length */
@@ -19558,7 +19558,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var isArray_1 = __webpack_require__(14);
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var OuterSubscriber_1 = __webpack_require__(2);
 var subscribeToResult_1 = __webpack_require__(3);
 function race() {
@@ -20524,7 +20524,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Subscriber_1 = __webpack_require__(1);
 var ArgumentOutOfRangeError_1 = __webpack_require__(27);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 /**
  * Emits only the last `count` values emitted by the source Observable.
  *
@@ -21831,7 +21831,7 @@ exports.isPromise = isPromise;
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 exports.of = ArrayObservable_1.ArrayObservable.of;
 //# sourceMappingURL=of.js.map
 
@@ -21861,7 +21861,7 @@ var isArrayLike_1 = __webpack_require__(70);
 var isPromise_1 = __webpack_require__(71);
 var PromiseObservable_1 = __webpack_require__(75);
 var IteratorObservable_1 = __webpack_require__(225);
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var ArrayLikeObservable_1 = __webpack_require__(226);
 var iterator_1 = __webpack_require__(20);
 var Observable_1 = __webpack_require__(0);
@@ -21984,7 +21984,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var Observable_1 = __webpack_require__(0);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -22199,7 +22199,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var tryCatch_1 = __webpack_require__(9);
 var errorObject_1 = __webpack_require__(8);
 var Observable_1 = __webpack_require__(0);
@@ -27327,7 +27327,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 /**
  * Returns an Observable that repeats the stream of items emitted by the source Observable at most count times.
  *
@@ -28538,9 +28538,9 @@ var SkipWhileSubscriber = (function (_super) {
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var ScalarObservable_1 = __webpack_require__(47);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 var concat_1 = __webpack_require__(48);
 var isScheduler_1 = __webpack_require__(13);
 /* tslint:enable:max-line-length */
@@ -28859,7 +28859,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Subscriber_1 = __webpack_require__(1);
 var ArgumentOutOfRangeError_1 = __webpack_require__(27);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 /**
  * Emits only the first `count` values emitted by the source Observable.
  *
@@ -30801,7 +30801,7 @@ function deactivateOuterSpaceBackground() {
         }
     });
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(11), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(10), __webpack_require__(16)))
 
 /***/ }),
 /* 169 */
@@ -30954,7 +30954,7 @@ $(document).ready(function () {
     }
     setupCube();
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15)))
 
 /***/ }),
 /* 176 */
@@ -31119,18 +31119,49 @@ $(document).ready(function () {
         }
     }
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function($, emitter, cubeState) {
 
 __webpack_require__(178);
 
 __webpack_require__(179);
+
+/************************************************************
+    work around for the backface visibillity issue on Macs  
+************************************************************/
+$(document).ready(function () {
+    var homeSectionWrapper = $('#home-section-wrapper');
+
+    emitter.on('entering-contact-section', function () {
+        homeSectionWrapper.css({
+            'backface-visibility': 'hidden',
+            '-webkit-backface-visibility': 'hidden'
+        });
+    });
+
+    emitter.on('camera-facing-changed', function () {
+        if (cubeState.get('cameraFacing') != 'outside-the-box') {
+            homeSectionWrapper.css({
+                'backface-visibility': 'initial',
+                '-webkit-backface-visibility': 'initial'
+            });
+        }
+    });
+
+    // emitter.on('leaving-contact-section', function () {
+    //     homeSectionWrapper.css({
+    //         'backface-visibility': 'initial',
+    //         '-webkit-backface-visibility': 'initial'
+    //     })
+    // })
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 178 */
@@ -31370,7 +31401,7 @@ $(window).on('load', function () {
         setupAnimationTimeline();
     }
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 180 */
@@ -40183,7 +40214,7 @@ $(window).on('load', function () {
         (0, _utils.unlockElementInteractions)(detailsDiv);
     }
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 210 */
@@ -40356,7 +40387,7 @@ function lineToLetters(line) {
     });
     return line[0];
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 213 */
@@ -41118,7 +41149,7 @@ Observable_1.Observable.combineLatest = combineLatest_1.combineLatest;
 
 var isScheduler_1 = __webpack_require__(13);
 var isArray_1 = __webpack_require__(14);
-var ArrayObservable_1 = __webpack_require__(15);
+var ArrayObservable_1 = __webpack_require__(17);
 var combineLatest_1 = __webpack_require__(36);
 /* tslint:enable:max-line-length */
 /**
@@ -41316,7 +41347,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var Observable_1 = __webpack_require__(0);
 var iterator_1 = __webpack_require__(20);
 /**
@@ -41487,7 +41518,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Observable_1 = __webpack_require__(0);
 var ScalarObservable_1 = __webpack_require__(47);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -41693,7 +41724,7 @@ Observable_1.Observable.empty = empty_1.empty;
 
 "use strict";
 
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 exports.empty = EmptyObservable_1.EmptyObservable.create;
 //# sourceMappingURL=empty.js.map
 
@@ -41730,7 +41761,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(0);
-var EmptyObservable_1 = __webpack_require__(16);
+var EmptyObservable_1 = __webpack_require__(18);
 var isArray_1 = __webpack_require__(14);
 var subscribeToResult_1 = __webpack_require__(3);
 var OuterSubscriber_1 = __webpack_require__(2);
@@ -43596,7 +43627,7 @@ var Subject_1 = __webpack_require__(7);
 var Subscriber_1 = __webpack_require__(1);
 var Observable_1 = __webpack_require__(0);
 var Subscription_1 = __webpack_require__(6);
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var ReplaySubject_1 = __webpack_require__(41);
 var tryCatch_1 = __webpack_require__(9);
 var errorObject_1 = __webpack_require__(8);
@@ -43920,7 +43951,7 @@ exports.QueueScheduler = QueueScheduler;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 function assignImpl(target) {
     var sources = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -45346,7 +45377,7 @@ exports.distinct = distinct;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 function minimalSetImpl() {
     // THIS IS NOT a full impl of Set, this is just the minimum
     // bits of functionality we need for this library.
@@ -46247,7 +46278,7 @@ exports.groupBy = groupBy;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var MapPolyfill_1 = __webpack_require__(356);
 exports.Map = root_1.root.Map || (function () { return MapPolyfill_1.MapPolyfill; })();
 //# sourceMappingURL=Map.js.map
@@ -48883,7 +48914,7 @@ exports.AsapAction = AsapAction;
 Some credit for this helper goes to http://github.com/YuzuJS/setImmediate
 */
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var ImmediateDefinition = (function () {
     function ImmediateDefinition(root) {
         this.root = root;
@@ -51231,7 +51262,7 @@ exports.AnimationFrameAction = AnimationFrameAction;
 
 "use strict";
 
-var root_1 = __webpack_require__(10);
+var root_1 = __webpack_require__(11);
 var RequestAnimationFrameDefinition = (function () {
     function RequestAnimationFrameDefinition(root) {
         if (root.requestAnimationFrame) {
@@ -51619,7 +51650,7 @@ function enableScroll(element) {
     document.onmousewheel = null;
     document.onkeydown = null;
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 510 */
@@ -51659,7 +51690,7 @@ function createSkillsDiv(mainContainer, positionRefElement) {
 function getSkillHTML() {
     return '<div id="my-skills">\n                <span id="head">Skills</span>\n                <ul>\n                    <li>Javascript</li>\n                    <li>jQuery</li>\n                    <li>Typescript</li>\n                    <li>Angular</li>\n                    <li>EJS</li>\n                    <li>Node.js</li>\n                    <li>PHP</li>\n                    <li>MongoDB</li>\n                    <li>MySQL</li>\n                    <li>AJAX</li>\n                    <li>HTML</li>\n                    <li>CSS</li>\n                    <li>Bootstrap</li>\n                    <li>Webpack</li>\n                    <li>Inkscape</li>\n                    <li>Photoshop</li>\n                    <li>Premiere</li>\n                    <li>After effects</li>\n                </ul>\n            </div>';
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 511 */
@@ -51732,7 +51763,7 @@ function hideWorkSection(section) {
 function revealWorkSection(section) {
     $(section).removeClass('no-display').prev('.wall-outer-surface').addClass('no-display');
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 512 */
@@ -51798,7 +51829,7 @@ function configLineAndScroller(scrollContent, line, pseudoScroller) {
     var arrowHeight = lineHeight * heightRatio;
     arrow.height(arrowHeight).width(arrowWidth);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 514 */
@@ -51859,7 +51890,7 @@ var ProjectTile = exports.ProjectTile = function () {
 
     return ProjectTile;
 }();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 515 */
@@ -51921,7 +51952,7 @@ function scrollLine(line, position) {
 function unsubscribeScrollEvent() {
     if (lineScroll$) lineScroll$.unsubscribe();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(16)))
 
 /***/ }),
 /* 517 */
@@ -52067,7 +52098,7 @@ $(window).on('load', function () {
         console.log('error data:', err);
     }
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(17), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15), __webpack_require__(16)))
 
 /***/ }),
 /* 520 */
@@ -52200,7 +52231,7 @@ var ClientValidator = exports.ClientValidator = function () {
 
     return ClientValidator;
 }();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 521 */

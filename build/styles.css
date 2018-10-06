@@ -555,8 +555,8 @@ div.wall .wall-outer-surface{
     width: 100%;
     background: black;
     transform-style: preserve-3d;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;    
+    /* backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;     */
 }
 
 #skip-intro-animation-button{
