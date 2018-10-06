@@ -14029,6 +14029,7 @@ var CubeState = {
 
     cameraFacing: 'unInitialized', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box'  */
     cameraPreviousFacing: '', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box' */
+    introAnimationTriggered: false,
     introAnimationFinished: false,
     navigationButtonsEnabled: false,
 
@@ -31016,7 +31017,6 @@ $(document).ready(function () {
         return navigateRoom('outside-the-box');
     });
 
-    debugger;
     navigateRoom('face-left');
 
     function revealNavigation() {
@@ -31207,11 +31207,18 @@ $(window).on('load', function () {
     });
 
     emitter.on('camera-facing-changed', function () {
-        debugger;
         if (cubeState.get('cameraFacing') == 'left-wall' && !cubeState.get('introAnimationFinished')) {
             beginAnimation();
         }
     });
+
+    // Make sure intro animation begins if it hadnt already for some reason
+    setTimeout(function () {
+        debugger;
+        if (cubeState.get('introAnimationTriggered') == false) {
+            beginAnimation();
+        }
+    }, 2000);
 
     /*************************
          SVG canvas setup
@@ -31337,6 +31344,7 @@ $(window).on('load', function () {
                 } else {
                     master.play();
                 }
+                if (cubeState.get('introAnimationTriggered') == false) cubeState.set('introAnimationTriggered', true);
             }
         }, 0);
     }
