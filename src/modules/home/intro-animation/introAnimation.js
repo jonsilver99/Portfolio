@@ -40,6 +40,17 @@ $(window).on('load', function () {
         }
     })
 
+
+    // Make sure intro animation begins if it hadnt already for some reason
+    setTimeout(function () {
+        debugger;
+        if (cubeState.get('introAnimationTriggered') == false) {
+            beginAnimation()
+        }
+    }, 2000)
+
+
+
     /*************************
          SVG canvas setup
     *************************/
@@ -165,6 +176,7 @@ $(window).on('load', function () {
                 } else {
                     master.play()
                 }
+                if (cubeState.get('introAnimationTriggered') == false) cubeState.set('introAnimationTriggered', true)
             }
         }, 0);
     }

@@ -2,6 +2,7 @@ const CubeState = {
 
     cameraFacing: 'unInitialized', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box'  */
     cameraPreviousFacing: '', /* 'unInitialized' | 'left-wall' | 'back-wall' |'right-wall' | 'front-wall' | 'outside-the-box' */
+    introAnimationTriggered: false,
     introAnimationFinished: false,
     navigationButtonsEnabled: false,
 
