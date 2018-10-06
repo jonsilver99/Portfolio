@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start2": "webpack && nodemon server.js",
-    "start": "webpack-dev-server --hot"
+    "startdev": "webpack-dev-server --hot",
+    "start": "node server.js"
   },
   "author": "joni silverstein",
   "license": "ISC",
