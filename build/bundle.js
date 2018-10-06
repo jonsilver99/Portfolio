@@ -31016,6 +31016,7 @@ $(document).ready(function () {
         return navigateRoom('outside-the-box');
     });
 
+    debugger;
     navigateRoom('face-left');
 
     function revealNavigation() {
@@ -31206,6 +31207,7 @@ $(window).on('load', function () {
     });
 
     emitter.on('camera-facing-changed', function () {
+        debugger;
         if (cubeState.get('cameraFacing') == 'left-wall' && !cubeState.get('introAnimationFinished')) {
             beginAnimation();
         }
@@ -38164,7 +38166,6 @@ function getSvgElementCoords(svgCanvas, svgEl) {
 }
 
 function removeSkipAnimationButton(skipAnimButton) {
-    debugger;
     skipAnimButton.style.setProperty('opacity', '0', 'important');
     setTimeout(function () {
         skipAnimButton.remove();

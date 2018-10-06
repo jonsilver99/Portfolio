@@ -38,7 +38,8 @@ $(document).ready(function () {
     $('#face-right').on('click', () => navigateRoom('face-right'))
 
     $('#outside-the-box').on('click', () => navigateRoom('outside-the-box'))
-
+    
+    debugger;
     navigateRoom('face-left')
 
     function revealNavigation() {
