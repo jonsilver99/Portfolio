@@ -1,0 +1,182 @@
+/**********************
+    Work section
+**********************/
+#right-wall{
+    overflow: auto;
+    background: url('../../assets/images/workBG6.jpg') no-repeat;
+    background: url('../../assets/images/workBG7.jpg') no-repeat;
+    background-size: 100% 100%;
+    background-position: center bottom;
+}
+
+#right-wall::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+}
+
+section#work{
+    width: 100%;
+    /* height: 3000px; */
+    display: block;
+}
+
+#pseudo-scroller{
+    /* position: absolute; */
+    height: 3000px;
+    pointer-events: none;
+}
+
+/* scrolling component */
+#scroll-content{
+    position: fixed;
+    transform-style: preserve-3d;
+    transform: translateX(-14vw) translateY(460px) rotateX(45deg) rotateZ(45deg);
+    width: 40%;
+    top:0;
+    /* width: 70vw; */
+    /* max-width: 1200px;
+    height: calc(100vh - 280px); */
+}
+
+/* line */ 
+#projects-line{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    opacity: 0.85;
+    width: 100%;
+    padding: 2rem; /*32px*/
+}
+
+#projects-line > #arrow-sign{
+    height: 100px;
+    width: 80px;
+    min-height: 65px !important;
+    min-width: 50px !important;
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: url('../../assets/images/arrow2.png') no-repeat;
+    background-size: 100% 100%;
+    background-position: center bottom;
+    /* z-index: 99; */
+    opacity: 1;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}    
+
+#projects-line.scrolling > #arrow-sign{
+    opacity: 0;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+/* tile */
+.proj-tile{
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    margin-bottom: 2rem; /*32px*/
+    z-index: 0;
+    transition: all 200ms ease-in-out 200ms;        
+}
+
+/* tile shadow */
+.proj-tile::before{
+    z-index: -10;
+    content: "";
+    height: 100%;    
+    width: 100%;
+    background: rgb(0, 0, 0);
+    display: block;
+    position: absolute;
+    opacity: 0;
+    transition: all 200ms ease-in-out 400ms;
+    transform: scale(0.8);
+}
+
+/* tile face */
+.tile-face{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: url('../../assets/images/BrowserFrame1.png');
+    background-size: 100% 100%;
+    transition: all 200ms ease-in-out 400ms;
+    border: 1px solid gray;    
+    /* border-bottom: 2px solid #21282e;
+    border-right: 2px solid #21282e;
+    box-shadow: 1px 1px 0px 0px #21282e; */
+}
+
+/* tile top info label */
+.tile-label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    height: 3rem;
+    width: 100%;
+    opacity: 0;
+    padding: 1rem 0;
+    transition: all 200ms ease-in-out;
+    color: rgb(44, 44, 44);
+    font-size: 1.25rem;
+    font-weight: bold;  
+}
+
+.tile-label > span{
+    margin: 0 0.75rem 0 0;
+    text-align: left;
+}   
+
+.gitLogo > img {
+    width: 1.5rem;
+    height: 2rem;
+}
+
+/* tile hover animation sequence */
+
+/* 1 - levitate tile face  */
+.proj-tile:hover > .tile-face{
+    transform: translateY(-45px) translateX(-45px); 
+    transition: all 200ms ease-in-out;
+}
+
+/* 2 - animate tile's shadow  */
+.proj-tile:hover::before{
+    opacity: .85;
+    transform: scale(.96);
+    box-shadow: 0 0 10px 5px #000000;
+    transition: all 200ms ease-in-out;
+}
+
+/* 3 - rotate tile  */
+.proj-tile:hover{
+    transform: rotateZ(-45deg) translateY(-45px);
+    z-index: 100;
+    transition: all 200ms ease-in-out 200ms;
+    cursor: pointer;
+}
+
+/* 3 - reveal tile's info label  */
+.proj-tile:hover > .tile-face > .tile-label{
+    opacity: 1;
+    transition: all 200ms ease-in-out 400ms;
+}

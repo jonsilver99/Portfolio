@@ -1,0 +1,28 @@
+To get ejs to work with partial templates in webpack dev server:
+
+1) webpack.config.js file : 
+
+    ** define a rule like so:
+
+        module: {
+            rules: [
+                {
+                    test: /\.ejs$/,
+                    use: "ejs-compiled-loader",
+                }            
+            ]
+        }
+
+    ** OR define an HtmlWebpackPlugin like so:
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: '!!ejs-compiled-loader!./src/views/index.ejs',
+            })
+        ]
+
+2) in the index.ejs (or main ejs template) use the following include syntax : 
+
+        <%- include src/views/partials/contact %> -- the path needs to be relative to the webpack.config.js file!
+
+
+

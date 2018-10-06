@@ -1,1 +1,4 @@
 /node_modules
+/.vscode
+/env/dev_vars.js
+/unused

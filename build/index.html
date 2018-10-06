@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Candal|Days+One|Rokkitt|Wendy+One" rel="stylesheet">
+    <title>Y.S - Portfolio</title>
+<link href="/build/styles.css" rel="stylesheet"></head>
+
+<body>
+    <!-- preload fonts -->
+    <div id="preload-fonts" class="hide translucent">
+        <span>Rokkitt font</span>
+        <span>Candal font</span>
+        <span>Days One font</span>
+    </div>
+
+    <!-- psuedo scroller -->
+    <div id="pseudo-scroller"></div>
+
+    <!-- page navigation -->
+    <div id="navigation-menu" class="concealed">
+    <ul class="buttons flexRow">
+        <li>
+            <button class="nav-button selected" id="face-left">Home</button>
+        </li>
+        <li>
+            <button class="nav-button" id="face-back">About</button>
+        </li>
+        <li>
+            <button class="nav-button" id="face-right">My work</button>
+        </li>
+        <li>
+            <button class="nav-button" id="outside-the-box">Contact</button>
+        </li>
+    </ul>
+</div>
+
+
+        <!-- The cube -->
+        <div id="viewport">
+
+            <!-- outerspace background -->
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+
+            <!-- Floating contact form -->
+            <div id="contact-modal" class="hidden-contact-modal">
+    <!-- modal header -->
+    <h1>Get in touch!</h1>
+
+    <div id="contact-form-wrapper">
+        <form id="contact-form">
+
+            <div class="field-wrapper">
+                <input type="text" name="name" placeholder="name">
+                <label>
+                    Name
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="email" placeholder="email">
+                <label>
+                    E-mail
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="phone" placeholder="phone">
+                <label>
+                    Phone
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <textarea name="message" placeholder="message"></textarea>
+                <label>
+                    Your message
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper submit-field">
+                <button type="submit" disabled='true'>
+                    <span id="idle">Send</span>
+                    <span id="mail-progress-bar"></span>
+                    <span id="mail-progress-caption"></span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- modal footer -->
+    <footer>
+        <ul>
+            <li class="social-links github">
+                <a href="https://github.com/jonsilver99?tab=repositories" rel="noopener noreferrer" target="_blank">
+                    <img src=assets/GitHub.png>
+                </a>
+            </li>
+            <li class="social-links linkedin">
+                <a href="https://www.linkedin.com/in/yonatan-silberstein-986331160/" rel="noopener noreferrer" target="_blank">
+                    <img src=assets/linkedin.png>
+                </a>
+            </li>
+            <li class="social-links cv">
+                <!-- <a href="assets/Yonatan Silverstein - CV.docx"> -->
+                <a href="/build/assets/Yonatan Silverstein - CV.docx" download>
+                    <img src=assets/cv.png>
+                </a>
+            </li>
+        </ul>
+
+        <!-- preload social media hover icons -->
+        <div id="preload-lit-icons" class="hide translucent">
+            <img src=assets/GitHub-lit.png>
+            <img src=assets/linkedin-lit.png>
+            <img src=assets/cv-lit.png>
+        </div>
+
+    </footer>
+
+</div>
+
+                <div id="room" class="face-left">
+
+                    <!--******** LEFT WALL - Home/Intro animation *********-->
+                    <div id="left-wall" class="wall">
+                        <div class="wall-outer-surface"></div>
+                        <!-- Import svg objects -->
+<div id="svg-imported-shapes" class="hide translucent">
+    <object class="svg hide" id="svgText" type="image/svg+xml" data=assets/title1WhiteOnWhite3.svg>
+        <h1>Your browser doesnt support svg</h1>
+    </object>
+    <object class="svg hide" id="box1" type="image/svg+xml" data=assets/box.svg>
+        <h1>Your browser doesnt support svg</h1>
+    </object>
+    <object class="svg hide" id="box2" type="image/svg+xml" data=assets/box2.svg>
+        <h1>Your browser doesnt support svg</h1>
+    </object>
+    <object class="svg hide" id="box3" type="image/svg+xml" data=assets/box3.svg>
+        <h1>Your browser doesnt support svg</h1>
+    </object>
+    <object class="svg hide" id="box4" type="image/svg+xml" data=assets/box4b.svg>
+        <h1>Your browser doesnt support svg</h1>
+    </object>
+</div>
+
+<!-- Intro animation canvas -->
+<div id="home-section-wrapper">
+    <svg id="svg-viewbox-tests" xmlns="http://www.w3.org/2000/svg" width="1230" height="608" viewBox="-615 -304 1230 608" preserveAspectRatio="xMidYMid">
+    </svg>
+    <button id='skip-intro-animation-button'>Skip intro</button>
+</div>
+                    </div>
+
+                    <!--******** Back wall - about page *********-->
+                    <div id="back-wall" class="wall">
+                        <div class="wall-outer-surface"></div>                            
+                        <section id="about">
+
+    <!-- regular content loader (no grid) - commented out by ejs comment syntax     
+        
+    -->
+
+    <!-- grid content loader -->
+    <!-- pure css with grid layout -->
+
+<div class="cnt-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+        <div id="picture">
+            <img src=assets/meAndChup.jpg>
+        </div>
+
+        <div id="details">
+            <div id="about-me">
+                <p id="fading-para"></p>
+                <!-- <div id="my-skills"></div>  - inserted via javascript -->
+            </div>
+        </div>
+
+        <div id="bottom-fade"></div>
+
+</section>
+
+<!-- Unused -->
+<!-- <div id="tempButtons"> -->
+<!-- <button id="paragraphToLines">Arrange in lines</button>
+<button id="initializeParagraph">Reset</button> -->
+<!-- <button id="testObservable">Test Observable</button> -->
+<!-- </div> -->
+                    </div>
+
+                    <!--******** Right wall - Work/portfolio *********-->
+                    <div id="right-wall" class="wall">
+                        <div class="wall-outer-surface no-display"></div>                        
+                        <section id="work">
+
+    <div id="scroll-content">
+        <div id="projects-line">
+            <div id="arrow-sign"></div>
+        </div>
+    </div>
+</section>
+
+<!-- image preloading -->
+<img class="dummyLoad hide translucent" src=assets/GitHub-lit.png>
+<img class="dummyLoad hide translucent" src=assets/GitHub.png>
+
+<img class="dummyLoad hide translucent" src=assets/screenShot-foodMart.png>
+<img class="dummyLoad hide translucent" src=assets/screenShot-CRM.png>
+<img class="dummyLoad hide translucent" src=assets/screenShot-mp3Player.png>
+<img class="dummyLoad hide translucent" src=assets/screenShot-imgRecon.png>
+                    </div>
+
+                    <!--******** empty walls *********-->
+                    <div id="front-wall" class="wall">
+                    </div>
+
+                    <div id="top-wall" class="wall">
+                    </div>
+
+                    <div id="bottom-wall" class="wall">
+                        <div id="floor-gloss-layer"></div>
+                    </div>
+                </div>
+
+        </div>
+
+<script type="text/javascript" src="/build/bundle.js"></script></body>
+
+</html>

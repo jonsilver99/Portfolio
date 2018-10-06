@@ -5,15 +5,23 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && nodemon server.js",
-    "serve": "webpack-dev-server --hot"
+    "start2": "webpack && nodemon server.js",
+    "start": "webpack-dev-server --hot"
   },
   "author": "joni silverstein",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "ejs-compiled-loader": "^1.1.0",
+    "ejs-render-loader": "^1.0.0",
     "express": "^4.16.3",
+    "flubber": "^0.4.2",
+    "gsap": "^2.0.2",
     "jquery": "^3.3.1",
-    "rxjs": "^5.5.2"
+    "nodemailer": "^4.6.8",
+    "rxjs": "^5.5.2",
+    "vivus": "^0.4.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -21,6 +29,8 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.17.5",
     "style-loader": "^0.21.0",
     "webpack": "^3.10.0",

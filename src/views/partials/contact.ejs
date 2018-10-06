@@ -1,0 +1,81 @@
+<div id="contact-modal" class="hidden-contact-modal">
+    <!-- modal header -->
+    <h1>Get in touch!</h1>
+
+    <div id="contact-form-wrapper">
+        <form id="contact-form">
+
+            <div class="field-wrapper">
+                <input type="text" name="name" placeholder="name">
+                <label>
+                    Name
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="email" placeholder="email">
+                <label>
+                    E-mail
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="phone" placeholder="phone">
+                <label>
+                    Phone
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper">
+                <textarea name="message" placeholder="message"></textarea>
+                <label>
+                    Your message
+                    <span class="invalid-msg"></span>
+                </label>
+            </div>
+
+            <div class="field-wrapper submit-field">
+                <button type="submit" disabled='true'>
+                    <span id="idle">Send</span>
+                    <span id="mail-progress-bar"></span>
+                    <span id="mail-progress-caption"></span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- modal footer -->
+    <footer>
+        <ul>
+            <li class="social-links github">
+                <a href="https://github.com/jonsilver99?tab=repositories" rel="noopener noreferrer" target="_blank">
+                    <img src=<%=require("../assets/images/GitHub.png")%>>
+                </a>
+            </li>
+            <li class="social-links linkedin">
+                <a href="https://www.linkedin.com/in/yonatan-silberstein-986331160/" rel="noopener noreferrer" target="_blank">
+                    <img src=<%=require("../assets/images/linkedin.png")%>>
+                </a>
+            </li>
+            <li class="social-links cv">
+                <!-- <a href="assets/Yonatan Silverstein - CV.docx"> -->
+                <a href="/build/assets/Yonatan Silverstein - CV.docx" download>
+                    <img src=<%=require("../assets/images/cv.png")%>>
+                </a>
+            </li>
+        </ul>
+
+        <!-- preload social media hover icons -->
+        <div id="preload-lit-icons" class="hide translucent">
+            <img src=<%=require( "../assets/images/GitHub-lit.png")%>>
+            <img src=<%=require( "../assets/images/linkedin-lit.png")%>>
+            <img src=<%=require( "../assets/images/cv-lit.png")%>>
+        </div>
+
+    </footer>
+
+</div>

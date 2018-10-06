@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Candal|Days+One|Rokkitt|Wendy+One" rel="stylesheet">
+    <title>Y.S - Portfolio</title>
+</head>
+
+<body>
+    <!-- preload fonts -->
+    <div id="preload-fonts" class="hide translucent">
+        <span>Rokkitt font</span>
+        <span>Candal font</span>
+        <span>Days One font</span>
+    </div>
+
+    <!-- psuedo scroller -->
+    <div id="pseudo-scroller"></div>
+
+    <!-- page navigation -->
+    <%- include src/views/partials/navigation %>
+
+        <!-- The cube -->
+        <div id="viewport">
+
+            <!-- outerspace background -->
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+
+            <!-- Floating contact form -->
+            <%- include src/views/partials/contact %>
+
+                <div id="room" class="face-left">
+
+                    <!--******** LEFT WALL - Home/Intro animation *********-->
+                    <div id="left-wall" class="wall">
+                        <div class="wall-outer-surface"></div>
+                        <%- include src/views/partials/home %>
+                    </div>
+
+                    <!--******** Back wall - about page *********-->
+                    <div id="back-wall" class="wall">
+                        <div class="wall-outer-surface"></div>                            
+                        <%- include src/views/partials/about %>
+                    </div>
+
+                    <!--******** Right wall - Work/portfolio *********-->
+                    <div id="right-wall" class="wall">
+                        <div class="wall-outer-surface no-display"></div>                        
+                        <%- include src/views/partials/work %>
+                    </div>
+
+                    <!--******** empty walls *********-->
+                    <div id="front-wall" class="wall">
+                    </div>
+
+                    <div id="top-wall" class="wall">
+                    </div>
+
+                    <div id="bottom-wall" class="wall">
+                        <div id="floor-gloss-layer"></div>
+                    </div>
+                </div>
+
+        </div>
+
+</body>
+
+</html>

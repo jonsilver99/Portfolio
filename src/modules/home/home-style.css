@@ -1,0 +1,46 @@
+/***********************************************
+    Left wall - home section/intro animation 
+***********************************************/
+#svg-imported-shapes{
+    position: absolute;
+    top: -100%;
+    left: -100%;
+
+}
+
+#home-section-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: black;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+#skip-intro-animation-button{
+    display: block;
+    width: 12%;
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    opacity: 0.6;
+    font-size: 1.5rem;
+    -webkit-transition: all .75s ease;
+    transition: all .75s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Days One';
+}
+
+#skip-intro-animation-button:hover{
+    opacity: 1;
+}
+
+#skip-intro-animation-button.removed{
+    opacity: 0 !important;
+}

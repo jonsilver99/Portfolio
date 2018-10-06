@@ -1,0 +1,30 @@
+<section id="about">
+
+    <!-- regular content loader (no grid) - commented out by ejs comment syntax     
+        <%#- include loaders/content-loader %>
+    -->
+
+    <!-- grid content loader -->
+    <%- include loaders/content-loader-grid %>
+
+        <div id="picture">
+            <img src=<%=require( "../assets/images/meAndChup.jpg")%>>
+        </div>
+
+        <div id="details">
+            <div id="about-me">
+                <p id="fading-para"></p>
+                <!-- <div id="my-skills"></div>  - inserted via javascript -->
+            </div>
+        </div>
+
+        <div id="bottom-fade"></div>
+
+</section>
+
+<!-- Unused -->
+<!-- <div id="tempButtons"> -->
+<!-- <button id="paragraphToLines">Arrange in lines</button>
+<button id="initializeParagraph">Reset</button> -->
+<!-- <button id="testObservable">Test Observable</button> -->
+<!-- </div> -->
