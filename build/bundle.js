@@ -38123,7 +38123,7 @@ function setupSVGCanvas(SVGCanvas, containerWallId) {
 
     SVGCanvas.setAttribute('width', wallW);
     SVGCanvas.setAttribute('height', wallH);
-    SVGCanvas.setAttribute('viewbox', -wallW / 2 + ' ' + -wallH / 2 + ' ' + wallW + ' ' + wallH);
+    // SVGCanvas.setAttribute('viewBox', `${-wallW / 2} ${-wallH / 2} ${wallW} ${wallH}`)
     SVGCanvas.setAttribute('viewport-fill', 'red');
 }
 
