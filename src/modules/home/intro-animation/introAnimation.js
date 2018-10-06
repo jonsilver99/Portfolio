@@ -35,7 +35,6 @@ $(window).on('load', function () {
     })
 
     emitter.on('camera-facing-changed', function () {
-        debugger;
         if (cubeState.get('cameraFacing') == 'left-wall' && !cubeState.get('introAnimationFinished')) {
             beginAnimation()
         }

@@ -39,7 +39,6 @@ $(document).ready(function () {
 
     $('#outside-the-box').on('click', () => navigateRoom('outside-the-box'))
     
-    debugger;
     navigateRoom('face-left')
 
     function revealNavigation() {
