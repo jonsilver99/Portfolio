@@ -15,6 +15,7 @@
     background: black;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;    
 }
 
 #skip-intro-animation-button{

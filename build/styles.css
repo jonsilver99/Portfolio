@@ -556,6 +556,7 @@ div.wall .wall-outer-surface{
     background: black;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;    
 }
 
 #skip-intro-animation-button{
@@ -614,6 +615,7 @@ section#about{
     overflow: hidden;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /*** bottom fade gradient ***/

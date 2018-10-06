@@ -28,6 +28,7 @@ section#about{
     overflow: hidden;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /*** bottom fade gradient ***/
