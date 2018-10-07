@@ -12,3 +12,9 @@ NOTE: this project is highly experimental and works only on chrome at the moment
 ### Known issues:
 - At the moment this projects runs properly only on chrome
 - On a mac, theres a small rendering issue in the 'Home' page
+
+### To do:
+- Hook up a domain
+- Load modules via exporting module-init functions and calling them inside the entry.js file
+- Set relative values for the 'shatter' animation
+- Setup basic css breakpoints 
