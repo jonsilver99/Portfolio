@@ -8,6 +8,7 @@ NOTE: this project is highly experimental and works only on chrome at the moment
 - Reactive form using rxjs observables
 - Extensive use and manipulation of scalable vector graphics (SVG)
 - GSAP and VIVUS animations
+- Efficient module splitting and webpack bundling
 
 ### Known issues:
 - At the moment this projects runs properly only on chrome
